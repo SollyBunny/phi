@@ -1,0 +1,178 @@
+:root {
+	--fg: #fff;
+	--bgd: #111;
+	--bg: #222;
+	--bgl: #333;
+	--bgh: #444;
+	--bge: #d22;
+	--time: 0.1s;
+	--box-shadow-in: 0 2px 4px 1px rgba(11,11,11,0.3);
+	--box-shadow-out: 0 1px 2px 0 rgba(255,255,255,0.1);
+}
+* {
+	color: var(--fg);
+}
+a, input, button, select, input + label {
+	cursor: pointer;
+}
+label {
+	display: inline-block;
+	margin: 1vmin;
+}
+	label button {
+		pointer-events: none;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+input, button, select, input + label {
+	min-width: 0;
+	outline: none;
+	border: none;
+	border-radius: 4px;
+	padding: 4px;
+	margin: 1px;
+	color: var(--fg);
+	background-color: var(--bgl);
+	transition: background-color var(--time) ease;
+}
+	input[type="radio"] {
+		display: none;
+	}
+	input[type="number"], input[type="text"] {
+		cursor: text;
+	}
+	input[type="color"] {
+		padding: 0;
+		height: calc(2ch + 1em);
+		width: calc(100% - 4px) !important;
+		min-width: 15ch;
+		overflow: clip;
+	}
+	input:hover,
+	button:hover,
+	select:hover,
+	input:hover + label {
+		box-shadow: var(--box-shadow-in), inset var(--box-shadow-out);
+	}
+	input:focus, input:checked, input:active,
+	button:focus, button:active,
+	select:focus,
+	input:focus + label, input:checked + label, input:active + label {
+		box-shadow: var(--box-shadow-in), inset var(--box-shadow-out);
+		background-color: var(--bgh);
+	}
+	button:disabled, input:disabled, select:disabled {
+		background-color: #333 !important;
+		cursor: not-allowed !important;
+		opacity: 0.7 !important;
+		box-shadow: inset var(--box-shadow-in);
+	}
+.combinedinput {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+}
+	.combinedinput > * {
+		margin: 0;
+		height: 4ch;
+		line-height: 4ch;
+	}
+	.combinedinput > label {
+		margin-right: 1ch;
+	}
+/* Main */
+#dummy {
+	opacity: 0;
+	pointer-events: none;
+	user-select: none;
+}
+body {
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+#can {
+	width: 100vw;
+	height: 100vh;
+}
+.pauseplay {
+	user-select: none;
+	aspect-ratio: 1;
+}
+	#pauseplay {
+		height: 80%;
+	}
+	.pauseplay > input {
+		display: none;
+	}
+	.pauseplay > label {
+		width: 100%;
+		height: 100%;
+		display: block;
+		border-radius: 100%;
+		background: white;
+		border: 1px solid #333;
+		position: relative;
+	}
+		.pauseplay > label:after {
+			display: block;
+			content: "";
+			width: 50%;
+			height: 50%;
+			background: #333;
+			top: 25%;
+			left: 25%;
+			border-radius: 5%;
+			position: absolute;
+			transition: transform 0.3s ease-in-out, clip-path 0.3s ease-in-out;
+			clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+		}
+			.pauseplay > input:checked + label:after {
+				transform: rotate(90deg);
+				clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 0% 100%);
+			}
+#winTools {
+	display: grid;
+	grid-template-columns: 50px 50px;
+	grid-template-rows: repeat(auto-fit, 50px);
+	overflow: hidden;
+}
+	#winTools > label {
+		aspect-ratio: 1;
+		font-size: 120%;
+		min-width: 40px;
+		position: relative;
+	}
+		#winTools > label > * {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+.ctx {
+	width: min-content !important;
+	height: min-content !important;
+	padding: 1vmin;
+}
+	.ctx-section {
+		padding: 1vmin;
+		width: min-content;
+		overflow: hidden;
+	}
+	.ctx .section {
+		white-space: nowrap;
+		position: relative;
+		padding-right: 3ch;
+		overflow: hidden;
+		width: 100%;
+		text-align: left;
+	}
+		.ctx .section > iconify-icon {
+			margin-right: 0.5ch;
+		}
+		.ctx .caret {
+			position: absolute;
+			right: 0;
+		}

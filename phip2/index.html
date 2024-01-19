@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Phi </title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="./winbox.min.css">
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<script src="./iconify-icon.min.js"></script>
+	<!-- <script src="./iconify.min.js"></script> -->
+	<!-- <script src="./decomp.min.js"></script> -->
+	<!-- <script src="./ctxmenu.min.js"></script> -->
+	<script src="./panzoom.min.js"></script>
+	<!-- <script src="./matter.min.js"></script> -->
+	<script src="./winbox.min.js"></script>
+	<!-- <script src="./gzip.min.js"></script> -->
+	<!-- <script src="./gunzip.min.js"></script> -->
+	<!-- <script src="./json-binary.js"></script> -->
+	<script src="./json-cool.js"></script>
+	<script type="module">
+		import * as p2 from "./p2-es.js";
+		window.P2 = p2;
+	</script>
+	<script src="./index.js" defer></script>
+	<body>
+		<canvas id="can"> </canvas>
+		<div id="dummy">
+			<div id="winOpts">
+				<div class="pauseplay" id="pauseplay">
+					<input checked id="pauseplaycheckbox" type="checkbox" oninput="pause()">
+					<label title="Pause / Play" for="pauseplaycheckbox"></label>
+				</div>
+				<iconify-icon icon="mdi:color"></iconify-icon>
+			</div>
+			<div id="winTools">
+				<input oninput="toolUpdate(event)" checked type="radio" name="tool" value="0" id="tool-select"><label for="tool-select" title="Rectangle"><iconify-icon icon="mdi:cursor-pointer"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="1" id="tool-pan"><label for="tool-pan" title="Rectangle"><iconify-icon icon="mdi:drag-variant"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="2" id="tool-rotate"><label for="tool-rotate" title="Rectangle"><iconify-icon icon="mdi:rotate-right"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="3" id="tool-rectselect"><label for="tool-rectselect" title="Rectangle"><iconify-icon icon="mdi:select"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="rectangle" id="tool-rectangle"><label for="tool-rectangle" title="Rectangle"><iconify-icon icon="mdi:rectangle"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="circle" id="tool-circle"><label for="tool-circle" title="Circle"><iconify-icon icon="mdi:circle"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="draw" id="tool-draw"><label for="tool-draw" title="Draw"><iconify-icon icon="mdi:draw"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="polygon" id="tool-polygon"><label for="tool-polygon" title="Polygon"><iconify-icon icon="ph:polygon-fill"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="glue" id="tool-glue"><label for="tool-glue" title="Glue"><div>X</div></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="axel" id="tool-axel"><label for="tool-axel" title="Axel"><div>O</div></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="spring" id="tool-spring"><label for="tool-spring" title="Spring"><iconify-icon icon="game-icons:spring"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="chain" id="tool-chain"><label for="tool-chain" title="Chain"><iconify-icon icon="fa:chain"></iconify-icon></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="laser" id="tool-laser"><label for="tool-laser" title="Laser"><div>&gt;</div></label>
+				<input oninput="toolUpdate(event)" type="radio" name="tool" value="tracer" id="tool-tracer"><label for="tool-tracer" title="Tracer"><div>@</div></label>
+			</div>
+		</div>
+		<noscript style="position:fixed;left:0;top:0;width:100vw;height:100vh;font-size:15vmin;text-align:center;background-color:#333;"> This website requires JS! (obviously, its a physics engine) </noscript>
+	</body>
+</html>
