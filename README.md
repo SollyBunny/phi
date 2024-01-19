@@ -1,2 +1,2 @@
 # phi
-Matter.JS basic algadoo clone
+matter.js based algadoo clone
